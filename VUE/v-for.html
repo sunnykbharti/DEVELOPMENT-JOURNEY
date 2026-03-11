@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>v-for</title>
+</head>
+<body>
+    <div id="app">
+        <li v-for="subject in subjects">{{subject}}</li>
+        <br>
+        <p>With indeices</p>
+        <li v-for="(subject, index) in subjects" :key="index">
+            {{index+1}} - {{subject}}
+        </li>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+
+            data () {
+                return {
+                    subjects : ["Physics II","Mathematics II","Engineering Drawing","Electronics","Chemistry"]
+                };
+            },
+        })
+
+    app.mount('#app')
+    </script>
+</body>
+</html>

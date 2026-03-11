@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}Course Details{% endblock %}
+
+{% block content %}
+    <h1>Course Details</h1>
+
+    <!-- Course Details Table (ID: course-detail) -->
+    <table id='course-detail'>
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Course Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ course.course_code }}</td>
+                <td>{{ course.course_name }}</td>
+                <td>{{ course.course_description or '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Enrollment list</h2>
+
+    <!-- Enrollment List Table (ID: course-table) -->
+    {% if enrollments %}
+        <table id="course-table">
+            <thead>
+                <tr>
+                    <th>SNo</th>
+                    <th>Roll Number</th>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for enrollment, student in enrollments %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ student.roll_number }}</td>
+                    <td>{{ student.first_name }}</td>
+                    <td>{{ student.last_name or '' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No students enrolled in this course.</p>
+    {% endif %}
+
+    <p style="margin-top: 20px;"><a href="{{ url_for('courses_list') }}">Go Back</a></p>
+{% endblock %}

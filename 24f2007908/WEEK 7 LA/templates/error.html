@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Error{% endblock %}
+
+{% block content %}
+    <h1>Error</h1>
+    <p class="error-message">{{ message }}</p>
+    
+    <p style="margin-top: 20px;"><a href="{{ back_uri }}">Go Home</a></p>
+    
+    <p style="margin-top: 20px;">
+        <small>Note: "Go Home" navigates back to the appropriate index page (students or courses).</small>
+    </p>
+{% endblock %}

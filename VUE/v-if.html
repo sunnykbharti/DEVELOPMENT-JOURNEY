@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>V-IF</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-if="isloggedin"> Aaja, kaisa hai !!</h2>
+        <h2 v-else> Abe Bhadwe, login to kar !!!</h2>
+
+        <button @click="login">Bole to Login Here!!</button>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data () {
+                return{
+                    isloggedin : false
+                };
+            },
+
+            methods: {
+                login() {
+                    this.isloggedin = !this.isloggedin;
+                },
+            },
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>

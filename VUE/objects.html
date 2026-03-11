@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>v-for</title>
+</head>
+<body>
+    <div id="app">
+        <li v-for = "student in students">
+            <h3> {{student.name}} </h3>
+            <p> Marks : {{student.marks}} </p>
+        </li>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+
+            data () {
+                return {
+                    students : [
+                        {"name" : "Sunny", "marks" : "96"},
+                        {"name" : "Utkarsh", "marks" : "77"},
+                        {"name" : "Sumit", "marks" : "66"},
+                        {"name" : "Ritik", "marks" : "58"},
+                    ]
+                };
+            },
+        })
+
+    app.mount('#app')
+    </script>
+</body>
+</html>

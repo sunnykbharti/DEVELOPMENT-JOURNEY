@@ -1,0 +1,8 @@
+print(a)
+# a.add(2)
+# a.add(4)
+# a.remove(5)
+# a.__len__()
+# a.__contains__(4)
+# a.query(6)
+# a.p()

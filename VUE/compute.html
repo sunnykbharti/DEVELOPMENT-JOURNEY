@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Compute</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-if="isloggedin">Welcome, You are logged in as {{user}}</h2>
+        <h2 v-else> Thank You!, for visiting our website!</h2>
+
+        <button @click="button">{{buttontext}}</button>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return{
+                    isloggedin : false,
+                    user:"Sunny",
+                    buttontext:'Login Now'
+                }
+            },
+            // Method 1
+            methods : {
+                button () {
+                    this.isloggedin = !this.isloggedin
+
+                    if(this.isloggedin){
+                        this.buttontext = "Logout Now";
+                    }
+                    else{
+                        this.buttontext = "Login Now";
+                    }
+                }
+            }
+
+            // Method 2
+            // methods : {
+            //     button () {
+            //         this.isloggedin = !this.isloggedin
+            //     }
+            // }
+
+            // computed : {
+            //     buttontext () {
+            //         return this.isloggedin ? 'Click to logout' : 'Click to login'
+            //     }
+            // }
+        })
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

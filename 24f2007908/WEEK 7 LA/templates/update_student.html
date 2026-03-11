@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}Update Student{% endblock %}
+
+{% block content %}
+    <h1>Update Student</h1>
+    <form action="{{ url_for('update_student', student_id=student.student_id) }}" method="POST" id="update-student-form">
+        <div>
+            <label>Roll Number: </label>
+            <input type="text" name="roll" value="{{ student.roll_number }}" disabled />
+        </div>
+        <div>
+            <label>First Name: </label>
+            <input type="text" name="f_name" value="{{ student.first_name }}" required />
+        </div>
+        <div>
+            <label>Last Name: </label>
+            <input type="text" name="l_name" value="{{ student.last_name or '' }}"/>
+        </div>
+        
+        <!-- Course Enrollment Section (Note: Only non-enrolled courses should ideally show up, but for simplicity, showing all) -->
+        <div>
+            <label for="course">Select Course to Enroll: </label>
+            <select name="course" id="course">
+                <option value="">-- Select a Course --</option>
+                {% for course in courses %}
+                    <!-- We check if the student is already enrolled (Optional improvement: filter this list in Python) -->
+                    {% set is_enrolled = False %}
+                    {% for enrollment in student.enrollments %}
+                        {% if enrollment.ecourse_id == course.course_id %}
+                            {% set is_enrolled = True %}
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if not is_enrolled %}
+                        <option value="{{ course.course_id }}">{{ course.course_name }} ({{ course.course_code }})</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <small> (Selecting a course will enroll the student and keep existing enrollments)</small>
+        </div>
+
+        <div>
+            <input type="submit" value = "Update">
+        </div>
+    </form>
+{% endblock %}

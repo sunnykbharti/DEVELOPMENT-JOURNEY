@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>v-bind</title>
+</head>
+<body>
+    <div id="app">
+        <h3> Dynamically rendering image and alt text </h3>
+        <img v-bind:src = "imageurl" v-bind:alt = "imagealt" >
+<br>
+        <h3> Dynamicially rendering link </h3>
+        <a v-bind:href = "link" > Click here to proceed to Website </a>
+<br>
+        <h3>Dynamic Button</h3>
+        <button v-bind:disabled="isdisabled"> SUBMIT </button>
+        <button @click="togglebutton">Toggle SUBMIT </button>
+    </div>
+
+    <script>
+        Vue.createApp({
+            
+            data () {
+                return {
+                    imageurl : "https://static.vecteezy.com/system/resources/thumbnails/023/186/184/small_2x/abstract-landscape-with-planet-and-trees-3d-render-illustration-ai-generative-image-free-photo.jpg",
+                    imagealt : "Artistic Work",
+                    link : "https://study.iitm.ac.in/ds",
+                    isdisabled : true
+                }
+            },
+
+            methods : {
+                togglebutton () {
+                    this.isdisabled = !this.isdisabled
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

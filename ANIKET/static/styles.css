@@ -1,0 +1,47 @@
+.head{
+    width:100%;
+    color: whitesmoke;
+    background-color: rgb(6, 98, 81);
+    height:150px;
+    overflow:auto;
+    text-align: center;
+    border-bottom: 2px solid #ccc; 
+    padding-top: 10px;
+}
+
+.description{
+    font-size:20px;
+    color:rgb(17, 160, 170);
+    padding: 20px;
+    line-height: 1.6;
+}
+
+body {
+    background-color: white;
+    font-family:'Times New Roman', Times, serif;
+}
+
+p {
+    color: aqua; 
+}
+
+.index{
+    background-color: antiquewhite;
+    width: 300px;
+    display: inline-block;
+    text-align: center;
+    display: flex; 
+    flex-wrap: wrap;
+    overflow: auto;
+    float: left;
+}
+a{
+    background-color: antiquewhite;
+    width: 300px;
+    display: inline-block;
+    text-align: center;
+    display: flex; 
+    flex-wrap: wrap;
+    overflow: auto;
+    float: left;
+}
