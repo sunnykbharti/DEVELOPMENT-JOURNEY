@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>v-bind shorthand</title>
 </head>
 <body>
-    
+    <div id="app">
+        <h2 :class="iserror? 'red' : 'green'">{{message}}</h2>
+        <button @click="toggleerror">Toggle</button>
+    </div>
+
+    <style>
+        .red {color: red;}
+        .green {color: green;}
+    </style>
+
+    <script>
+        Vue.createApp({
+            data () {
+                return {
+                    iserror : false,
+                    message : "Sunny is Here!"
+                }
+            },
+
+            methods : {
+                toggleerror () {
+                    this.iserror = !this.iserror
+                }
+            }
+        }).mount('#app')
+    </script>
 </body>
 </html>
