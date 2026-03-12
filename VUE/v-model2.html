@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>V-model 2</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-if="isloggedin">Welcome, {{username}}</h2>
+
+        <div v-else>
+            <input v-model="username" placeholder="Enter Your Username">
+            <input v-model="password" placeholder="Enter Your password" type="password">
+
+            <button @click="login">Login</button>
+            <p v-if="error">{{error}}</p>
+        </div>
+
+        <button v-if="isloggedin" @click="logout">Logout Now!</button>
+
+    </div>
+
+    <script>
+
+        Vue.createApp({
+
+            data () {
+                return {
+                    username : '',
+                    password : '',
+                    isloggedin : false,
+                    error : ''
+                }
+            },
+
+            methods : {
+
+                login () {
+
+                    if ( this.username === 'Sunny' && this.password === "0"){
+                        this.isloggedin = true
+                        this.error = ''
+                    }
+
+                    else {
+                        this.error = "Invalid Username or password!"
+                    }
+                },
+
+                logout () {
+                    this.isloggedin = false
+                    this.username = ''
+                    this.password = ''
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
