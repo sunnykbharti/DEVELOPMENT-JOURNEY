@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>COMPONENT 4 DEMO</title>
+</head>
+<body>
+    <div id="app">
+        <counter-btn></counter-btn> <!-- Has its own count -->
+        <counter-btn></counter-btn> <!-- Completely seperate count -->
+        <counter-btn></counter-btn> <!-- Independent from others -->
+    </div>
+
+    <script>
+        const app = Vue.createApp({})
+
+        app.component('counter-btn', {
+            template : `
+                <div>
+                    <p> Count : {{count}}</p>
+                    <button @click="count +=1">+1</button>
+            `,
+
+            data() {
+                return {
+                    count:0 //Each component has its own count
+                }
+            }
+        })
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Components Demo 1</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Using component like a custom html tag -->
+        <student-card></student-card>
+        <student-card></student-card>
+        <student-card></student-card>
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({})
+
+        // Defining the component
+        app.component('student-card', {
+            template: `
+                <div>
+                    <h3> Student Name : Sunny </h3>
+                    <p> Student Marks : 89 </p>
+                </div>
+            `
+        })
+
+        app.mount('#app')
+
+    </script>
+
+</body>
+</html>

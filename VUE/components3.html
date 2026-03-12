@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Components 3 Demo</title>
+</head>
+<body>
+    <div id="app">
+        <student-card
+        v-for="(student,index) in students"
+        :key="index"
+        :name="student.name"
+        :course="student.course"
+        ></student-card>
+    </div>
+
+    <script>
+
+        const app=Vue.createApp({
+            data () {
+                return {
+                    students:[
+                        { name : 'Sunny', course : 'MAD2 THEORY JAN26'},
+                        { name : 'Aniket', course : 'MAD2 PROJECT JAN26'},
+                        { name : 'Adarsh', course : 'MAD1 THEORY JAN26'},
+                        { name : 'Shubham', course : 'MAD1 PROJECT JAN26'},
+                        { name : 'Ansh', course : 'MLF JAN26'}
+                    ]
+                }
+            },
+        })
+            app.component('student-card',{
+                props:['name','course'],
+
+                template : `
+                <div style="border : 1px solid black; margin : 10px; padding : 10px;">
+                    <h3> {{name}} </h3>
+                    <p> Course Registered : {{course}} </p>
+                </div>
+                `
+            })
+
+            app.mount('#app')
+    </script>
+</body>
+</html>

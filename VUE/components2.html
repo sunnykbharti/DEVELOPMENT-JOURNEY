@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Components Demo 1</title>
+</head>
+<body>
+    <div id="app">
+        <student-card name="Sunny" marks="52"></student-card>
+        <student-card name="Aniket" marks="63"></student-card>
+        <student-card name="Shubham" marks="69"></student-card>
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({})
+
+        app.component('student-card', {
+            props: ['name', 'marks'], // Declare what you expect!!
+            template: `
+                <div>
+                    <h3> Student Name : {{name}} </h3>
+                    <p> Student Marks : {{marks}} </p>
+                </div>
+            `
+        })
+
+        app.mount('#app')
+
+    </script>
+
+</body>
+</html>
