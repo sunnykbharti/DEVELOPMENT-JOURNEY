@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Computed 1 Demo</title>
+</head>
+<body>
+    <div id="app">
+        <input v-model="firstname" placeholder="First Name">
+        <input v-model="lastname" placeholder="Last Name">
+
+        <h2> Full Name : {{ fullname }} </h2>
+        <h2> Caps Name : {{ capsname }}</h2>
+    </div>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    firstname : '',
+                    lastname : ''
+                }
+            },
+            computed : {
+                fullname(){
+                    return this.firstname+' '+this.lastname
+                },
+
+                capsname(){
+                    return this.fullname.toUpperCase()
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

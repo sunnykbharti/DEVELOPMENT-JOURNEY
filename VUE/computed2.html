@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Computed 2 Demo</title>
+</head>
+<body>
+    <div id="app">
+
+        <input v-model.number="marks" type="number" placeholder="Enter Your Marks Out of 100">
+
+        <h2> Student Report : </h2>
+        <h4>Marks : {{ marks }}</h4>
+        <h4>Grade Letter : {{ grade }}</h4>
+        <h4>Status : {{ status }}</h4>
+        <h4>Remarks : {{ remarks }}</h4>
+
+        <p>This Report is generated through computed</p>
+    </div>
+
+    <script>
+
+        Vue.createApp({
+            data() {
+                return {
+                    marks : 0
+                }
+            },
+
+            computed : {
+                grade() {
+                    if(this.marks >= 90) return 'A+'
+                    else if(this.marks >= 80) return 'A'
+                    else if(this.marks >= 70) return 'B+'
+                    else if(this.marks >= 60) return 'B'
+                    else if(this.marks >= 50) return 'C'
+                    else if(this.marks >= 40) return 'D'
+                    else return 'F'
+                },
+
+                status() {
+                    return this.marks >= 40 ? 'Pass' : 'Fail'
+                },
+
+                remarks() {
+                    if(this.grade === 'A+') return 'Superb'
+                    else if(this.grade === 'A') return 'Excellent'
+                    else if(this.grade === 'B+') return 'Very Good'
+                    else if(this.grade === 'B') return 'Good'
+                    else if(this.grade === 'C') return 'Pass'
+                    else if(this.grade === 'D') return 'Fail'
+                    else return 'Improve Next Time'
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
