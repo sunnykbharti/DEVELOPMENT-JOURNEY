@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Username Validation</title>
+</head>
+<body>
+    <div id="app">
+        <input v-model="username" placeholder="Create Username...">
+        <p :style="{ color : messagecolor }"> {{ validationmsg }} </p>
+    </div>
+    <script>
+        Vue.createApp({
+            data () {
+                return {
+                    username : '',
+                    validationmsg : 'Not Choosen',
+                    messagecolor : 'black'
+                }
+            },
+
+            watch : {
+                username(newv) {
+                    if (newv.length === 0) {
+                        this.validationmsg = 'Not Choosen'
+                        this.messagecolor = 'black'
+                    }
+                    else if (newv.length < 3) {
+                        this.validationmsg = 'Too Short! Minimum 3 Characters required!'
+                        this.messagecolor = 'red'
+                    }
+                    else if (newv.length > 10) {
+                        this.validationmsg = 'Too Long! Maximum 10 characters allowed!'
+                        this.messagecolor = 'red'
+                    }
+                    else {
+                        this.validationmsg = 'Username looks good'
+                        this.messagecolor = 'green'
+                    }
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
