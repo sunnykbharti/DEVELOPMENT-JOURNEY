@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Loading with settimer and LifeHooks</title>
+</head>
+<body>
+    <div id="app">
+        <h2> Students Details </h2>
+        <p v-if="loading">Loading....⏳</p>
+        <ul v-else>
+            <li v-for="(student,i) in students" :key='i'>
+                {{ student.name }} - {{ student.course }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    students : [],
+                    loading : true
+                }
+            },
+
+            // runs when component is ready
+            created() {
+                //simulating API call with settimeout
+                setTimeout(() => {
+                    this.students = [
+                        {name : "Sunny", course : "MLF"},
+                        {name : "Ahana", course : "DBMS"},
+                        {name : "Deepak", course : "PDSA"},
+                        {name : "Harsh", course : "MLP"},
+                        {name : "Junaid", course : "APP DEV"}
+                    ]
+                    this.loading = false
+                },2000)
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

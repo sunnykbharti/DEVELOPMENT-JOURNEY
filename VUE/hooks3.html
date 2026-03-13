@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Timer App</title>
+</head>
+    <body>
+        <div id="app">
+        <h2>⏱ Timer: {{ seconds }}s</h2>
+        <button @click="stopTimer">Stop</button>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    seconds: 0,
+                    timer: null
+                }
+            },
+            mounted() {
+                // start timer when component appears
+                this.timer = setInterval(() => {
+                    this.seconds++
+                }, 1000)
+            },
+            beforeUnmount() {
+                // clean up timer when component disappears
+                clearInterval(this.timer)
+            },
+            methods: {
+                stopTimer() {
+                    clearInterval(this.timer)
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

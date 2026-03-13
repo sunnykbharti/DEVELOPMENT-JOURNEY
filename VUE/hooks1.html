@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Life Cycle Hooks!</title>
+</head>
+<body>
+    <div id="app">
+        <h2> Count : {{ count }} </h2>
+        <button @click="count++">+1</button>
+    </div>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    count:0
+                }
+            },
+
+            beforeCreate() {
+                console.log('1. beforeCreate — data not ready yet')
+            },
+            created() {
+                console.log('2. created — data is ready!')
+            },
+            beforeMount() {
+                console.log('3. beforeMount — HTML not rendered yet')
+            },
+            mounted() {
+                console.log('4. mounted — HTML is on screen!')
+            },
+            beforeUpdate() {
+                console.log('5. beforeUpdate — data changed, rerender soon')
+            },
+            updated() {
+                console.log('6. updated — DOM re-rendered!')
+            },
+            beforeUnmount() {
+                console.log('7. beforeUnmount — about to be destroyed')
+            },
+            unmounted() {
+                console.log('8. unmounted — component is gone')
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
