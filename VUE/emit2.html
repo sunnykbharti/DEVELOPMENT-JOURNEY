@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Emit Demo 1</title>
+</head>
+<body>
+    <div id="app">
+
+        <h2>Selected Course: {{ selectedCourse }}</h2>
+        <course-picker @course-selected="updateCourse"></course-picker>
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    selectedCourse: 'None'
+                }
+            },
+            methods: {
+                updateCourse(course) {    // receives data from child
+                    this.selectedCourse = course
+                }
+            }
+        })
+
+        app.component('course-picker', {
+            template: `
+                <div>
+                    <button @click="pick('MAD2')">MAD2</button>
+                    <button @click="pick('MLF')">MLF</button>
+                    <button @click="pick('DBMS')">DBMS</button>
+                </div>
+            `,
+            methods: {
+                pick(course) {
+                    this.$emit('course-selected', course)  // sending data up!
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script>
+</body>
+</html>
