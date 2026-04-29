@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Routing</title>
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/home">Home | </router-link>
+        <router-link to="/about">About | </router-link>
+        <router-link to="/profile">Profile</router-link>
+        <h1> This is Header Part</h1>
+        <router-view></router-view>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
